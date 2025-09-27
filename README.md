@@ -87,3 +87,5 @@
 -   **Статистика заказов**
     -   `GET /api/orders/stats`
     -   Возвращает количество заказов по каждому статусу.
+ 
+      ![Руководитель](https://github.com/user-attachments/assets/d1f71d24-b4d6-471a-8206-f351f64b88b0)
