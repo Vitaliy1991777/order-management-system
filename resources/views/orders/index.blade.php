@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    {{-- 1. ИСПРАВЛЕНА ФОРМА ФИЛЬТРОВ (добавлены value="" и selected) --}}
+                    {{-- ВОТ ЭТА ФОРМА БЫЛА ПРОПУЩЕНА --}}
                     <form method="GET" action="{{ route('orders.index') }}" class="mb-4">
                         <div class="row align-items-end">
                             <div class="col-md-4">
@@ -41,13 +41,10 @@
                         </div>
                     </form>
 
-                    {{-- 3. ИСПРАВЛЕНА КНОПКА СТАТИСТИКИ (добавлены атрибуты data-bs-*) --}}
                     <div class="d-flex justify-content-end mb-3">
                         <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#statsModal">Статистика</button>
                     </div>
 
-
-                    {{-- ТАБЛИЦА ЗАКАЗОВ (остается без изменений) --}}
                     <table class="table table-bordered">
                         <thead class="table-light">
                             <tr>
@@ -65,11 +62,11 @@
                             @forelse ($orders as $order)
                                 <tr>
                                     <td>{{ $order->created_at->format('d.m.Y') }}</td>
-                                    <td>{{ $order->customer->full_name }}</td>
-                                    <td>{{ $order->customer->phone }}</td>
-                                    <td>{{ $order->customer->tin }}</td>
-                                    <td>{{ $order->customer->company_name }}</td>
-                                    <td>{{ $order->customer->address }}</td>
+                                    <td>{{ $order->customer_full_name }}</td>
+                                    <td>{{ $order->customer_phone }}</td>
+                                    <td>{{ $order->customer_tin }}</td>
+                                    <td>{{ $order->customer_company_name }}</td>
+                                    <td>{{ $order->customer_address }}</td>
                                     <td>
                                         {{ $order->items->pluck('name')->implode(', ') }}
                                     </td>
@@ -89,7 +86,7 @@
     </div>
 </x-app-layout>
 
-{{-- 2. ДОБАВЛЕНО МОДАЛЬНОЕ ОКНО ДЛЯ СТАТИСТИКИ --}}
+{{-- Модальное окно для статистики --}}
 <div class="modal fade" id="statsModal" tabindex="-1" aria-labelledby="statsModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
