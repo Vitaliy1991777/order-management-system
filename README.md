@@ -65,7 +65,6 @@
     -   **Логин:** `operator@example.com`
     -   **Пароль:** `password`
 
-
 ## Описание API
 
 Все эндпоинты доступны без авторизации.
@@ -90,5 +89,5 @@
  
       ![Руководитель](https://github.com/user-attachments/assets/d1f71d24-b4d6-471a-8206-f351f64b88b0)
       ![Оператор](https://github.com/user-attachments/assets/bccb6c6b-63e4-474d-bd4e-c071fc57cc90)
-      ![Статистика](https://git![Авторизация](https://github.com/user-attachments/assets/601ca52a-91be-484b-938a-77d8826b8538)
+      ![Статистика](https://github.com/user-attachments/assets/cc33bc49-2afb-412a-bfeb-71634cac73b7)
       ![Авторизация](https://github.com/user-attachments/assets/3e0960bf-65c1-48fc-a043-c108bb4f9588)
