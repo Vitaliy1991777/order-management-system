@@ -94,7 +94,7 @@
 
 Это решение соответствует принципам DRY (Don't Repeat Yourself) и SRP (Single Responsibility Principle), делая контроллеры "тонкими", а код — более чистым, тестируемым и легким для поддержки.
 
-![Руководитель](https://github.com/user-attachments/assetsd1f71d24-b4d6-471a-8206-f351f64b88b0)
+![Руководитель](https://github.com/user-attachments/assets4060b95d-8845-46ad-98dc-932513796532)
 ![Оператор](https://github.com/user-attachments/assets/bccb6c6b-63e4-474d-bd4e-c071fc57cc90)
 ![Статистика](https://github.com/user-attachments/assets/cc33bc49-2afb-412a-bfeb-71634cac73b7)
 ![Авторизация](https://github.com/user-attachments/assets/3e0960bf-65c1-48fc-a043-c108bb4f9588)
