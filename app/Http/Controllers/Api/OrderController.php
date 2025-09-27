@@ -73,6 +73,8 @@ class OrderController extends Controller
             'phone' => 'required|string|max:20',
             'products' => 'required|array',
             'products.*.name' => 'required|string',
+            'products.*.quantity' => 'required|integer|min:1', 
+            'products.*.unit' => 'required|string',  
         ]);
 
         $order = $orderService->createOrder($validatedData);

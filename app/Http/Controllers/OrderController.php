@@ -28,6 +28,8 @@ class OrderController extends Controller
             'phone' => 'required|string|max:20',
             'products' => 'nullable|array',
             'products.*.name' => 'nullable|string',
+            'products.*.quantity' => 'required_with:products.*.name|integer|min:1', 
+            'products.*.unit' => 'required_with:products.*.name|string',        
         ]);
 
         $orderService->createOrder($validatedData);
