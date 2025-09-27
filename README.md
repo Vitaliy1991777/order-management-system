@@ -12,7 +12,7 @@
 
 1.  **Клонировать репозиторий:**
     ```sh
-    git clone [URL вашего репозитория] order-management-system
+    git clone https://github.com/Vitaliy1991777/order-management-system.git
     cd order-management-system
     ```
 
