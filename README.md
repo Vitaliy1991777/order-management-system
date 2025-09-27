@@ -89,3 +89,5 @@
     -   Возвращает количество заказов по каждому статусу.
  
       ![Руководитель](https://github.com/user-attachments/assets/d1f71d24-b4d6-471a-8206-f351f64b88b0)
+      ![Оператор](https://github.com/user-attachments/assets/bccb6c6b-63e4-474d-bd4e-c071fc57cc90)
+      
