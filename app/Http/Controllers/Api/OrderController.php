@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Services\OrderService;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Order;
@@ -63,44 +64,20 @@ class OrderController extends Controller
     }
 
     /**
-     * Создание нового заказа.
-     * POST /api/orders
+     * Создает новый заказ через API.
      */
-    public function store(Request $request)
+    public function store(Request $request, OrderService $orderService)
     {
-        $validated = $request->validate([
+        $validatedData = $request->validate([
             'full_name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
             'products' => 'required|array',
             'products.*.name' => 'required|string',
         ]);
 
-        $customer = Customer::updateOrCreate(
-            ['phone' => $request->phone],
-            [
-                'full_name' => $request->full_name,
-                'email' => $request->email,
-                'tin' => $request->tin,
-                'company_name' => $request->company_name,
-                'address' => $request->address,
-            ]
-        );
+        $order = $orderService->createOrder($validatedData);
 
-        $order = Order::create([
-            'customer_id' => $customer->id,
-            'status' => 'новый',
-        ]);
-
-        foreach ($request->products as $productData) {
-            OrderItem::create([
-                'order_id' => $order->id,
-                'name' => $productData['name'],
-                'quantity' => $productData['quantity'],
-                'unit' => $productData['unit'],
-            ]);
-        }
-
-        return response()->json($order->load(['customer', 'items']), 201); // 201 - статус "Created"
+        return response()->json($order, 201);
     }
 
     /**

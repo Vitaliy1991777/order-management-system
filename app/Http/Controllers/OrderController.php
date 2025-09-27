@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers; 
 
+use App\Services\OrderService;
 use App\Models\Customer;    
 use App\Models\Order;        
 use App\Models\OrderItem;  
@@ -18,43 +19,18 @@ class OrderController extends Controller
     }
 
     /**
-     * Сохраняет новый заказ в базу данных
+     * Сохраняет новый заказ.
      */
-    public function store(Request $request)
+    public function store(Request $request, OrderService $orderService)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'full_name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
+            'products' => 'nullable|array',
+            'products.*.name' => 'nullable|string',
         ]);
 
-        $customer = Customer::updateOrCreate(
-            ['phone' => $request->phone],
-            [
-                'full_name' => $request->full_name,
-                'email' => $request->email,
-                'tin' => $request->tin,
-                'company_name' => $request->company_name,
-                'address' => $request->address,
-            ]
-        );
-
-        $order = Order::create([
-            'customer_id' => $customer->id,
-            'status' => 'новый',
-        ]);
-
-        if ($request->has('products')) {
-            foreach ($request->products as $productData) {
-                if (!empty($productData['name'])) {
-                    OrderItem::create([
-                        'order_id' => $order->id,
-                        'name' => $productData['name'],
-                        'quantity' => $productData['quantity'],
-                        'unit' => $productData['unit'],
-                    ]);
-                }
-            }
-        }
+        $orderService->createOrder($validatedData);
 
         return redirect()->route('orders.create')->with('success', 'Заказ успешно создан!');
     }
